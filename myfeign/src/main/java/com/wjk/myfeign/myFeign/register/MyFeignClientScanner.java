@@ -13,6 +13,7 @@ import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.core.type.filter.TypeFilter;
 import org.springframework.util.Assert;
+import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -63,14 +64,11 @@ public class MyFeignClientScanner extends ClassPathBeanDefinitionScanner {
         GenericBeanDefinition definition;
         for (BeanDefinitionHolder holder : beanDefinitions) {
             definition = (GenericBeanDefinition) holder.getBeanDefinition();
-//            AnnotationAttributes annotationAttributes = AnnotationAttributes.fromMap(definition.getMetadataAttribute().getAnnotationAttributes(MyFeignClient.class.getName(), false));
-//            if(annotationAttributes == null){
-//                continue;
-//            }
 
             definition = (ScannedGenericBeanDefinition) definition;
-
-            String url = "127.0.0.1:8899/order/addOrder";
+            Map<String, Object> annotationAttributes = ((ScannedGenericBeanDefinition) definition).getMetadata().getAnnotationAttributes(MyFeignClient.class.getName());
+            //annotation.url();
+            String url = (String) annotationAttributes.get("url");
 
             String beanClassName = definition.getBeanClassName();
             definition.setBeanClass(MyFeignClientFactoryBean.class);
@@ -87,11 +85,12 @@ public class MyFeignClientScanner extends ClassPathBeanDefinitionScanner {
     private String buildUrl(Map<String, Object> myFeignClient, Map<String, Object> requestMapping) {
 
 
-return "1";
+        return "1";
     }
 
     /**
      * 判断我们注入的是不是接口，可以业务上规定，也可以在写代码的是时候规定
+     *
      * @param beanDefinition
      * @return
      */

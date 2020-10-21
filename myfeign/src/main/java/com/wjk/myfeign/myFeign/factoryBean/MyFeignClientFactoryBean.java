@@ -46,7 +46,6 @@ public class MyFeignClientFactoryBean<T> implements FactoryBean<T>, ApplicationC
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .retryer(new Retryer.Default(100, TimeUnit.SECONDS.toMillis(1L), 0))
-                .options(new Request.Options(conf.getConnectTimeout(),conf.getReadTimeout(), true))
                 .target(proxyInterface, url);
     }
 
