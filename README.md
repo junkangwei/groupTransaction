@@ -11,7 +11,7 @@ https://www.processon.com/diagraming/5f431bdb0791297ca408e896
 
 
 
-# groupTransaction
+# MyFeignClient
 基于feign增加feign
 
 新增类似feign的实现
