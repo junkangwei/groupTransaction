@@ -16,7 +16,7 @@ public class OrderController {
 
     @RequestMapping("/addOrder")
     public void addOrder() {
-        orderService.addOrder();
+        System.out.println("333");
     }
 
 }

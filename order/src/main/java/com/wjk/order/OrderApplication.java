@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableTransactionManagement
 @MapperScan("com.wjk.order.mapper")
 @EnableAspectJAutoProxy
-@EnableGroupTransaction
+//@EnableGroupTransaction
 public class OrderApplication {
 
     public static void main(String[] args) {
